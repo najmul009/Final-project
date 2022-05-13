@@ -4,7 +4,7 @@ import doctor from '../../assets/images/doctor.png'
 
 const Appoinment = () => {
     return (
-        <div style={{background:`url(${appionment})`}} className="mt-60 flex justify-center items-center lg:px-20">
+        <div style={{background:`url(${appionment})`}} className="mt-60 flex justify-center items-center lg:px-20 ">
             <div className="text-center flex-1 hidden lg:block">
                 <img className='mt-[-110px] ' src={doctor} alt="" />
             </div>
