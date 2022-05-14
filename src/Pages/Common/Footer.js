@@ -6,11 +6,14 @@ const Footer = () => {
     const year = new Date().getFullYear()
     return (
 
-        <div style={{
+        
+        <div className='footer-section' style={{
             background: `url(${footer})`,
             backgroundSize: "cover"
         }}>
+            
             <footer className="footer p-10 md:p-32  ">
+                
                 <div>
                     <span className="footer-title">Services</span>
                     <Link to='/' className="link link-hover">Emergency Checkup</Link>
@@ -31,7 +34,7 @@ const Footer = () => {
             </footer>
             <footer class="footer footer-center p-4 ">
                 <div>
-                    <p>Copyright © {year} - All right reserved by ACME Industries Ltd</p>
+                    <p>Copyright © {year} - All right reserved </p>
                 </div>
             </footer>
         </div>
