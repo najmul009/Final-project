@@ -11,7 +11,7 @@ const Booking = ({date}) => {
         fetch('services.json')
         .then(res => res.json())
         .then(data => setServices(data))
-    })
+    },[])
     return (
         <div className='py-20'>
             <h3 className='text-secondary text-center font-bold text-2xl mb-10'>Available Appointments on {format(date, 'PP')}</h3>
@@ -27,7 +27,7 @@ const Booking = ({date}) => {
                 }
             </div>
             {
-                // tretment && <BookingModal tretment={tretment}></BookingModal>
+                tretment && <BookingModal date={date} setTretment={setTretment} tretment={tretment}></BookingModal>
             }
         </div>
     );
