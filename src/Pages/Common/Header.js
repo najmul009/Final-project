@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   const manubar = <>
     <li><Link to='/'>Home</Link></li>
-    <li><Link to='appionment'>Appionment</Link></li>
+    <li><Link to='/appionment'>Appionment</Link></li>
     <li><Link to='reviews'>Reviews</Link></li>
     <li><Link to='contact'>Contact</Link></li>
     <li><Link to='about'>About</Link></li>
@@ -28,7 +28,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to='login' className="btn">Login</Link>
+        <Link to='/login' className="btn">Login</Link>
       </div>
     </div>
   );
