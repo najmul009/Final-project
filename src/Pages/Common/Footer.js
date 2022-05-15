@@ -32,7 +32,7 @@ const Footer = () => {
                     <Link to='/' className="link link-hover">New York - 101010 Hudson</Link>
                 </div>
             </footer>
-            <footer class="footer footer-center p-4 ">
+            <footer className="footer footer-center p-4 ">
                 <div>
                     <p>Copyright © {year} - All right reserved </p>
                 </div>
