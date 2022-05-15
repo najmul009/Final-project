@@ -4,6 +4,7 @@ import { signOut } from 'firebase/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../Common/Loading';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [user ] = useAuthState(auth);
@@ -91,7 +92,7 @@ const Login = () => {
                         {signInError}
                         <input className='btn w-full max-w-xs' type="submit" />
                     </form>
-
+                    <p><small>New to Doctors Portal? <Link className='text-primary' to="/signup">Create New Account</Link></small></p>
                     <div className="divider">OR</div>
 
                     <button onClick={() => signInWithGoogle()} className="btn btn-outline btn-accent w-full max-w-xs">SignInWithGoogle</button>
