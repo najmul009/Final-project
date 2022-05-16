@@ -5,16 +5,16 @@ const DashBoard = () => {
     return (
         <div class="drawer">
             <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content relative ">
-            <label for="my-drawer" class="btn btn-primary drawer-button sticky top-0">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-            </label>
+            <div class="drawer-content relative lg:flex">
+                <label for="my-drawer" class="btn btn-primary drawer-button sticky top-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                </label>
                 {/* <!-- Page content here --> */}
-                <div className='px-4 md:px-10 lg:px-20'>
-                <h1 className='text-primary text-5xl text-center'>DashBoard</h1>
-                <Outlet></Outlet>
+                <div className='px-4 md:px-10 lg:px-20 w-full'>
+                    <h1 className='text-primary text-5xl text-center'>DashBoard</h1>
+                    <Outlet></Outlet>
                 </div>
-                
+
             </div>
             <div class="drawer-side">
                 <label for="my-drawer" class="drawer-overlay"></label>

@@ -25,7 +25,7 @@ const Booking = ({ date }) => {
     }
     let fetchError;
     if(error){
-        fetchError = <p className='text-red-500'><small>{error?.message}</small></p>
+        fetchError = <p className='text-red-500 text-5xl'><small>{error?.message}</small></p>
     }
     return (
         <div className='py-20'>
