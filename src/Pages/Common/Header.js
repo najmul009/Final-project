@@ -1,14 +1,29 @@
 import React from 'react';
+import { signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Loading from './Loading';
 
 const Header = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const logout = () => {
+    signOut(auth);
+  };
   const manubar = <>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/appionment'>Appionment</Link></li>
-    <li><Link to='reviews'>Reviews</Link></li>
-    <li><Link to='contact'>Contact</Link></li>
-    <li><Link to='about'>About</Link></li>
+    <li><Link to='/reviews'>Reviews</Link></li>
+    <li><Link to='/contact'>Contact</Link></li>
+    <li><Link to='/about'>About</Link></li>
   </>
+  if (loading) {
+    return <Loading></Loading>
+  }
+  let signInError;
+  if (error ) {
+    signInError = <p className='text-red-500'><small>{error?.message }</small></p>
+};
   return (
     <div className="navbar ">
       <div className="navbar-start">
@@ -20,7 +35,7 @@ const Header = () => {
             {manubar}
           </ul>
         </div>
-        <Link to='/'  className="btn btn-ghost normal-case text-xl">Dcotors Portal</Link>
+        <Link to='/' className="btn btn-ghost normal-case text-xl">Dcotors Portal</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
@@ -28,7 +43,8 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to='/login' className="btn">Login</Link>
+        {signInError}
+        {user ? <button onClick={logout} class="btn btn-accent">Logout</button> : <Link to='/login' className="btn">Login</Link>}
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import { signOut } from 'firebase/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../Common/Loading';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [user ] = useAuthState(auth);
@@ -16,20 +16,22 @@ const Login = () => {
         loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
-      let signInError;
-      if (loading || gLoading) {
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
+    let signInError;
+    if (loading || gLoading) {
         return <Loading></Loading>
     }
     if(user){
-        console.log(user);
+        navigate(from, { replace: true })
     };
     if(error || gError){
         signInError= <p className='text-red-500'><small>{error?.message || gError?.message }</small></p>
     };
     const onSubmit = data => {
         console.log(data);
-        // signOut(auth);
-        signInWithEmailAndPassword(data.email, data.name)
+        signInWithEmailAndPassword(data.email, data.password)
     };
     return (
         <div className='flex  h-screen justify-center items-center '>
@@ -90,7 +92,7 @@ const Login = () => {
                             </label>
                         </div>
                         {signInError}
-                        <input className='btn w-full max-w-xs' type="submit" />
+                        <input className='btn w-full max-w-xs' type="submit" value="Login"/>
                     </form>
                     <p><small>New to Doctors Portal? <Link className='text-primary' to="/signup">Create New Account</Link></small></p>
                     <div className="divider">OR</div>
