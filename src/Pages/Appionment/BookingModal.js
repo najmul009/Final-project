@@ -1,23 +1,44 @@
 import { format } from 'date-fns';
-import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import {  toast } from 'react-toastify';
+
 
 const BookingModal = ({ tretment, setTretment, date }) => {
     const [user] = useAuthState(auth);
-    const { name, slots } = tretment;
+    const {_id, name, slots } = tretment;
+    const formatDate = format(date, 'PP')
 
     const handelSubmit=(event)=>{
         event.preventDefault()
+        const serviceId = _id;
+        const serviceName = name;
         const date=event.target.date.value;
         const slot=event.target.slot.value;
-        const name=event.target.name.value;
+        const userName=event.target.name.value;
         const email=event.target.email.value;
         const phone=event.target.phone.value;
 
-        const bookingData={date,slot,name,email,phone}
+        const bookingData={serviceId,serviceName,date,slot,userName,email,phone}
         console.log(bookingData);
-        setTretment(null);
+
+       fetch('http://localhost:5000/booking',{
+           method: 'POST',
+           headers:{
+               'content-type': 'application/json'
+           },
+           body: JSON.stringify(bookingData)
+       })
+       .then(res=>res.json())
+       .then(data=>{
+           if(data.success){
+               toast('Appionment Booked')
+               setTretment(null);
+           }
+           else{
+               toast.error('Alrady have an appionment '+ data.exists?.date +"  "+ data.exists?.slot )
+           }
+       })
     }
     return (
         <div>
@@ -26,7 +47,7 @@ const BookingModal = ({ tretment, setTretment, date }) => {
                 <form onSubmit={handelSubmit} className="modal-box grid grid-cols-1 gap-4 justify-items-center">
                     <label htmlFor="my-modal-6" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-secondary font-bold text-xl">Booking For: {name}!</h3>
-                    <input type="text" name='date' value={format(date, 'PP')} disabled className="input input-bordered w-full max-w-xs" />
+                    <input type="text" name='date' value={formatDate} disabled className="input input-bordered w-full max-w-xs" />
                     <select name='slot' className="select select-bordered w-full max-w-xs">
                         {
                             slots.map((slot,index)=> <option
