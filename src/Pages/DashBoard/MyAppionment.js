@@ -9,7 +9,7 @@ import Loading from '../Common/Loading';
 const MyAppionment = () => {
     const navigate = useNavigate()
     const [user] = useAuthState(auth);
-    const { isLoading, error, data, refetch } = useQuery(['mybookings'], () =>
+    const { isLoading, error, data } = useQuery(['mybookings'], () =>
         fetch(`http://localhost:5000/mybookings?email=${user.email}`, {
             method: 'GET',
             headers: {
@@ -24,7 +24,6 @@ const MyAppionment = () => {
                     return;
                 }
                 return res.json()
-                console.log(res);
             })
             
     );

@@ -6,12 +6,13 @@ import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import RequireAuth from './Pages/Login/RequireAuth';
 import SignUp from './Pages/Login/SignUp';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DashBoard from './Pages/DashBoard/DashBoard';
 import MyAppionment from './Pages/DashBoard/MyAppionment';
 import MyReviews from './Pages/DashBoard/MyReviews';
 import AllUsers from './Pages/DashBoard/AllUsers';
+import RequireAdmin from './Pages/Login/RequireAdmin';
 
 
 function App() {
@@ -31,7 +32,11 @@ function App() {
           </RequireAuth>}>
           <Route index element={<MyAppionment></MyAppionment>}></Route>
           <Route path='/dashboard/reviews' element={<MyReviews></MyReviews>}></Route>
-          <Route path='/dashboard/allusers' element={<AllUsers></AllUsers>}></Route>
+          <Route path='/dashboard/allusers' element={
+            <RequireAdmin>
+              <AllUsers></AllUsers>
+            </RequireAdmin>
+          }></Route>
         </Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>

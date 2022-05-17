@@ -15,11 +15,11 @@ const useAdmin = user => {
             })
             .then(res=>res.json())
             .then(data => {
-                setAdmin(data[0].role);
                 setAdminLoading(false);
+                setAdmin(data[0]?.role);
             })
         }
-    }, [user])
+    }, [user,adminLoading])
 
     return [admin, adminLoading]
 }

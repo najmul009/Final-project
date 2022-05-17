@@ -6,7 +6,7 @@ import useAdmin from '../../Hooks/useAdmin';
 
 const DashBoard = () => {
     const [user] = useAuthState(auth)
-    const  [admin, adminLoading] = useAdmin(user)
+    const  [admin] = useAdmin(user)
     return (
         <div class="drawer">
             <input id="my-drawer" type="checkbox" class="drawer-toggle" />
