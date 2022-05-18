@@ -13,6 +13,7 @@ import MyAppionment from './Pages/DashBoard/MyAppionment';
 import MyReviews from './Pages/DashBoard/MyReviews';
 import AllUsers from './Pages/DashBoard/AllUsers';
 import RequireAdmin from './Pages/Login/RequireAdmin';
+import AddDoctor from './Pages/DashBoard/AddDoctor';
 
 
 function App() {
@@ -35,6 +36,11 @@ function App() {
           <Route path='/dashboard/allusers' element={
             <RequireAdmin>
               <AllUsers></AllUsers>
+            </RequireAdmin>
+          }></Route>
+          <Route path='/dashboard/addDoctor' element={
+            <RequireAdmin>
+              <AddDoctor></AddDoctor>
             </RequireAdmin>
           }></Route>
         </Route>
