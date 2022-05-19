@@ -15,6 +15,7 @@ import AllUsers from './Pages/DashBoard/AllUsers';
 import RequireAdmin from './Pages/Login/RequireAdmin';
 import AddDoctor from './Pages/DashBoard/AddDoctor';
 import ManageDoctors from './Pages/DashBoard/ManageDoctors';
+import Payment from './Pages/DashBoard/Payment';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           </RequireAuth>}>
           <Route index element={<MyAppionment></MyAppionment>}></Route>
           <Route path='/dashboard/reviews' element={<MyReviews></MyReviews>}></Route>
+          <Route path='/dashboard/payment/:id' element={<Payment></Payment>}></Route>
           <Route path='/dashboard/allusers' element={
             <RequireAdmin>
               <AllUsers></AllUsers>

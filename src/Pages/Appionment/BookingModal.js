@@ -6,20 +6,21 @@ import {  toast } from 'react-toastify';
 
 const BookingModal = ({ tretment, setTretment, date,refetch }) => {
     const [user] = useAuthState(auth);
-    const {_id, name, slots } = tretment;
+    const {_id, name, slots,price } = tretment;
     const formatDate = format(date, 'PP')
 
     const handelSubmit=(event)=>{
         event.preventDefault()
         const serviceId = _id;
         const serviceName = name;
+        const bokingPrice = price;
         const date=event.target.date.value;
         const slot=event.target.slot.value;
         const userName=event.target.name.value;
         const email=event.target.email.value;
         const phone=event.target.phone.value;
 
-        const bookingData={serviceId,serviceName,date,slot,userName,email,phone}
+        const bookingData={serviceId,serviceName,date,slot,userName,email,phone,bokingPrice}
         console.log(bookingData);
 
        fetch('http://localhost:5000/booking',{

@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Common/Loading';
 
@@ -46,6 +46,7 @@ const MyAppionment = () => {
                             <th>Service</th>
                             <th>Date</th>
                             <th>Slot</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,6 +56,12 @@ const MyAppionment = () => {
                                 <td>{apn.serviceName}</td>
                                 <td>{apn.date}</td>
                                 <td>{apn.slot}</td>
+                                <td>{
+                                        (apn.bokingPrice && !apn.paid)? <Link to={`/dashboard/payment/${apn._id}`}>
+                                            <button className='btn btn-primary'>Pay</button>
+                                        </Link>
+                                        : "Paid"
+                                    }</td>
                             </tr>)
                         }
 
