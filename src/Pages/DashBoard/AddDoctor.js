@@ -23,7 +23,6 @@ const AddDoctor = () => {
         })
         .then(res=>res.json())
         .then(result=>{
-            console.log(result);
             
             if(result.success){
                 const img = result.data.url;
@@ -44,7 +43,6 @@ const AddDoctor = () => {
                 })
                 .then(res=>res.json())
                 .then(inserted=>{
-                    console.log(inserted);
                     setUpLoading(false)
                     if(inserted.insertedId){
                         reset()

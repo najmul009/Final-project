@@ -34,7 +34,7 @@ const Booking = ({ date }) => {
             {fetchError}
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5 lg:px-20'>
                 {
-                    services.map(service => <BookingCard
+                    services?.map(service => <BookingCard
                         key={service._id}
                         service={service}
                         setTretment={setTretment}
